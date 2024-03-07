@@ -1,5 +1,6 @@
 "use client"
 import { Button, TextField } from "@mui/material";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Thread from "../../../components/Thread";
 import Reply from "../../../components/Reply";
@@ -12,14 +13,20 @@ export default function reply() {
         setReply(e.target.value)
     }
 
+    const router = useRouter();
+    const linkToThread = () => {
+      router.push("/thread")
+    };
+
+
     const getData = async function(){
     const response = await fetch(`https://gorest.co.in/public/v2/users?&page=0`);
-    const responseData =  response.json();
-    console.log(responsedata)}
+    const responseData =  await response.json();
+    console.log("data", responseData)}
 
     useEffect(()=>{
          getData()
-    },[])
+    },[])   
 
     return (
         <main>
@@ -56,12 +63,13 @@ export default function reply() {
             <div style={{ textAlign: "center", display: "flex", justifyContent: "center" }}>
 
                 <Button
+                    onClick={linkToThread}
                     color="success"
                     variant="contained"
                     sx={{
                         width: "180px",
                         fontSize: "20px",
-                    }}>←ホームへ戻る</Button>
+                    }}>←戻る</Button>
 
                 <TextField
 
