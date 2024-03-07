@@ -3,7 +3,7 @@ import { Button, TextField } from "@mui/material";
 export default function neweventdone() {
     return (
         <main style={{paddingTop:"20vh"}}>
-      <p style={{textAlign: "center",fontSize: "40px"}}>イベント情報 投稿フォーム</p>
+      <p style={{textAlign: "center",fontSize: "40px"}}>イベント情報  投稿フォーム</p>
       <div style={{backgroundColor : "rgba(255, 255, 255, 1)",
                    width: "90%",
                    height: "400px",
