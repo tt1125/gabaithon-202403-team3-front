@@ -1,19 +1,62 @@
-import { Button } from "@mui/material";
+"use client"
+import { Button, TextField } from "@mui/material";
+import { useState } from "react";
 import Thread from "../../../components/Thread";
 
 export default function reply() {
+
+    const [reply, setReply] = useState("")
+    function handleReplychange(e) {
+        setReply(e.target.value)
+    }
+
     return (
-        <main style={{ width: "100%", display: "flex", flexDirection: "column", alignItems: "center" }}>
-            <div style={{ width: "60%", marginTop: "50px", textAlign: "center", backgroundColor: "white", padding: "30px 10px 80px 10px" }}>
-                <p style={{ fontSize: "30px", margin: "20px 0" }}>掲示板一覧</p>
-                <Thread /> <Thread /> <Thread /> <Thread /> <Thread /> <Thread /> <Thread /> <Thread />
+        <main>
+            <p style={{ fontSize: "40px", textAlign: "center", margin: "20px 0" }}>掲示板返信一覧</p>
+            <div style={{
+                backgroundColor: "rgba(255, 255, 255, 1)",
+                width: "90%",
+                height: "400px",
+                margin: "auto",
+                textAlign: "center",
+                fontSize: "30px",
+                marginBottom: "10px"
+            }}>
             </div>
-            <div style={{padding:"20px",position: "fixed",top: "90vh",width:"100%" ,display : "flex" , justifyContent:"center" , backgroundColor:"#F8F2E2"}}>
-                <div style={{   width: "30%", display: "flex", justifyContent: "space-between" }}>
-                    <Button variant="text" color="warning" sx={{fontWeight:"bolder"}}>ホームへ戻る</Button>
-                    <Button variant="contained" color="warning">新規作成</Button>
-                </div>
+
+            <div style={{ textAlign: "center", display: "flex", justifyContent: "center" }}>
+
+                <Button
+                    color="success"
+                    variant="contained"
+                    sx={{
+                        width: "180px",
+                        fontSize: "20px",
+                    }}>←ホームへ戻る</Button>
+
+                <TextField
+
+                    value={reply}
+                    label="reply"
+                    onChange={handleReplychange}
+                    multiline
+                    rows={2}
+                    sx={{ width: "60%" ,backgroundColor: "white",   marginInline: "20px"}}
+                />
+                <Button
+                    color="error"
+                    variant="contained"
+                    sx={{
+                     
+                        width: "150px",
+                        fontSize: "20px"
+                    }}>投稿する</Button>
+
+
             </div>
+
+
+
         </main>
     )
 }
