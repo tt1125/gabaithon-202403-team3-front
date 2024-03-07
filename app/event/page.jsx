@@ -15,7 +15,7 @@ export default function event() {
       };
 
     return (
-        <main>
+        <main style={{paddingTop:"20vh"}}>
             <p style={{ fontSize: "40px", textAlign: "center", margin: "20px 0" }}>イベント情報</p>
             <div style={{
                 backgroundColor: "rgba(255, 255, 255, 1)",

@@ -16,13 +16,13 @@ export default function newevent() {
     }
 
     const router = useRouter();
-    const linkToHome = () => {
-      router.push("/")
+    const linkToInformation = () => {
+      router.push("/information")
     };
 
 
     return (
-        <main>
+        <main style={{paddingTop:"20vh"}}>
       <p style={{textAlign: "center",fontSize: "40px"}}>子育て支援情報 投稿フォーム</p>
       <div style={{backgroundColor : "rgba(255, 255, 255, 1)",
                    width: "90%",
@@ -67,15 +67,13 @@ export default function newevent() {
       <div style={{textAlign: "left",marginLeft: "10px",marginTop: "10px"}}>
                 <Button 
                 fullWidth
-                onClick={linkToHome}
+                onClick={linkToInformation}
                 color="success"
                 variant="contained" 
-                
-                
                 sx={{
                     width:"180px",
                     fontSize:"20px"
-                    }}>←ホームへ戻る</Button>
+                    }}>←戻る</Button>
             </div>
 
 
