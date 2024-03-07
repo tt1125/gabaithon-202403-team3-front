@@ -1,7 +1,8 @@
 import Header from '../components/Header'
-import backgroundColor from '../styles/globals'
+import '../styles/globals.css'
+
 export const metadata = {
-  title: '子育て掲示板',
+  title: 'Lulla',
   description: '子育てってほんとに大変！',
 }
 
