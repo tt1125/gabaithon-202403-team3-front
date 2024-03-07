@@ -1,6 +1,5 @@
 import Header from '../components/Header'
 import '../styles/globals.css'
-import backgroundColor from '../styles/globals'
 
 export const metadata = {
   title: 'Lulla',
