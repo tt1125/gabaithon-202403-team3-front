@@ -23,7 +23,7 @@ export default function thread() {
 
         const response = await fetch(URL);
         const threadsData = await response.json();
-        console.log(threadsData)
+        console.log("レスポンスデータです",threadsData)
         const count = threadsData.length;
         setHasMore(count > 0);
         setThreads([...threads, ...threadsData]);
