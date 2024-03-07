@@ -1,9 +1,9 @@
-export default function login () {
+export default function signup () {
     return (
         <main>
             <div>
                 <p>
-                    login
+                    signup
                 </p>
             </div>
         </main>
