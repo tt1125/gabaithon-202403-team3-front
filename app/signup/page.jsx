@@ -31,7 +31,7 @@ export default function signup () {
                     <TextField fullWidth value={email} onChange={handleEmailChange} label="メールアドレス"/>
                     <TextField fullWidth value={password} onChange={handlePasswordChange} label="パスワード"/>
                     <div style={{display : "flex" ,  width:"100%",justifyContent : "space-between" , gap:"60px"}}>
-                        <Button variant="outlined" color="warning" fullWidth>戻る</Button>
+                        <Button variant="outlined" color="warning" fullWidth >戻る</Button>
                         <Button variant="contained" color="warning" fullWidth>登録</Button>
                     </div>
                 </div>
