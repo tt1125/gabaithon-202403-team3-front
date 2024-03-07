@@ -29,7 +29,7 @@ export default function reply() {
     },[])   
 
     return (
-        <main>
+        <main style={{paddingTop:"20vh"}}>
             <p style={{ fontSize: "40px", textAlign: "center", margin: "20px 0" }}>掲示板返信一覧</p>
             <div style={{
                 backgroundColor: "rgba(255, 255, 255, 1)",
