@@ -15,7 +15,7 @@ export default function login() {
     }
 
     return (
-        <main>
+        <main style={{paddingTop:"20vh"}}>
             <p style={{textAlign: "center",fontSize: "60px"}}>
                 ログイン
             </p>
