@@ -1,7 +1,10 @@
 "use client"
 
 import { Button } from "@mui/material";
-import Thread from "../../components/Thread";
+
+import { useRouter } from "next/navigation";
+import Thread from "../../components/Thread"
+
 import { useEffect, useRef, useState } from "react";
 
 export default function thread() {
@@ -11,13 +14,32 @@ export default function thread() {
     const [page, setPage] = useState(0);
     const observerTarget = useRef(null);
 
+    const router = useRouter();
+    const linkToHome = () => {
+      router.push("/")
+    };
+    const linkToReply = () => {
+        router.push("/thread/reply")
+      };
+
     const loadThread = async (page) => {
-        // const threadsData = await response.json();
-        // console.log("レスポンスデータです",threadsData)
-        // const count = threadsData.length;
-        // setHasMore(count > 0);
-        // setThreads([...threads, ...threadsData]);
-        // threadsData.map((thread)=>console.log(thread))
+
+        const URL = `http://localhost:8000/api/v1/posts`;
+
+        // fetch(URL)
+        // .then(res => res.json())
+        // .then(data => {
+        //     console.log(data)
+        //     setThreads([...threads, ...data]);
+        // })
+
+        const response = await fetch(URL);
+        const threadsData = await response.json();
+        console.log("レスポンスデータです",threadsData)
+        const count = threadsData.length;
+        setHasMore(count > 0);
+        setThreads([...threads, ...threadsData]);
+        threadsData.map((thread)=>console.log(thread))
     }
 
     useEffect(() => {
@@ -63,8 +85,8 @@ export default function thread() {
             </div>
             <div style={{ padding: "20px", position: "fixed", top: "90vh", width: "100%", display: "flex", justifyContent: "center", backgroundColor: "#F8F2E2" }}>
                 <div style={{ width: "30%", display: "flex", justifyContent: "space-between" }}>
-                    <Button variant="text" color="warning" sx={{ fontWeight: "bolder" }}>ホームへ戻る</Button>
-                    <Button variant="contained" color="warning">新規作成</Button>
+                    <Button onClick={linkToHome} variant="text" color="warning" sx={{ fontWeight: "bolder" }}>ホームへ戻る</Button>
+                    <Button onClick={linkToReply} variant="contained" color="warning">新規作成</Button>
                 </div>
             </div>
         </main>

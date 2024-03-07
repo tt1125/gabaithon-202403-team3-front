@@ -1,4 +1,5 @@
 "use client"
+import { useRouter } from "next/navigation";
 import { Button, TextField } from "@mui/material";
 import { useState } from "react";
 
@@ -13,6 +14,12 @@ export default function newevent() {
     function handleDetailchange(e){
         setDetail(e.target.value)
     }
+
+    const router = useRouter();
+    const linkToHome = () => {
+      router.push("/")
+    };
+
 
     return (
         <main>
@@ -60,6 +67,7 @@ export default function newevent() {
       <div style={{textAlign: "left",marginLeft: "10px",marginTop: "10px"}}>
                 <Button 
                 fullWidth
+                onClick={linkToHome}
                 color="success"
                 variant="contained" 
                 

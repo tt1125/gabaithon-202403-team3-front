@@ -1,6 +1,17 @@
+"use client";
+import { useRouter } from "next/navigation";
 import { Button, TextField } from "@mui/material";
 
 export default function neweventdone() {
+
+    const router = useRouter();
+    const linkToHome = () => {
+      router.push("/")
+    };
+    const linkToNewinformation = () =>{
+        router.push("/information/newinformation")
+    };
+
     return (
         <main style={{paddingTop:"20vh"}}>
       <p style={{textAlign: "center",fontSize: "40px"}}>子育て支援情報  投稿フォーム</p>
@@ -15,6 +26,7 @@ export default function neweventdone() {
         }}>投稿完了しました</p>
             <div style={{textAlign: "right",marginRight: "10px"}}>
                 <Button 
+                onClick={linkToNewinformation}
                 fullWidth
                 color="error"
                 variant="contained" 
@@ -28,6 +40,7 @@ export default function neweventdone() {
       </div>
       <div style={{textAlign: "left",marginLeft: "10px",marginTop: "10px"}}>
                 <Button 
+                onClick={linkToHome}
                 fullWidth
                 color="success"
                 variant="contained" 
