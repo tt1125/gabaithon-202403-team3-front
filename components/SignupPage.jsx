@@ -2,8 +2,11 @@
 
 import { Button, TextField } from "@mui/material";
 import { useState } from "react";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth"
 
-export default function signup () {
+export default function SignupPage () {
+
+  
 
     const [name,setName] = useState('')
     const [email,setEmail] = useState('')
@@ -19,6 +22,23 @@ export default function signup () {
         setPassword(e.target.value)
     }
 
+    const doRegister = () => {
+        const auth = getAuth();
+    
+        // Firebaseで用意されているユーザー登録の関数
+        createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          // ユーザー登録すると自動的にログインされてuserCredential.userでユーザーの情報を取得できる
+          const user = userCredential.user;
+          // ユーザー登録ができたかどうかをわかりやすくするためのアラート
+          alert( '登録完了！' );
+          console.log( user );
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+      }
+
 
     return (
         <main>
@@ -32,7 +52,7 @@ export default function signup () {
                     <TextField fullWidth value={password} onChange={handlePasswordChange} label="パスワード"/>
                     <div style={{display : "flex" ,  width:"100%",justifyContent : "space-between" , gap:"60px"}}>
                         <Button variant="outlined" color="warning" fullWidth >戻る</Button>
-                        <Button variant="contained" color="warning" fullWidth>登録</Button>
+                        <Button variant="contained" color="warning" fullWidth onClick={doRegister}>登録</Button>
                     </div>
                 </div>
             </div>

@@ -1,8 +1,10 @@
 "use client"
 
 import { Button } from "@mui/material";
+
 import { useRouter } from "next/navigation";
 import Thread from "../../components/Thread"
+
 import { useEffect, useRef, useState } from "react";
 
 export default function thread() {
@@ -21,6 +23,7 @@ export default function thread() {
       };
 
     const loadThread = async (page) => {
+
         const URL = `http://localhost:8000/api/v1/posts`;
 
         // fetch(URL)
