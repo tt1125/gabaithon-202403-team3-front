@@ -1,4 +1,5 @@
 import Header from '../components/Header'
+import '../styles/globals.css'
 import backgroundColor from '../styles/globals'
 export const metadata = {
   title: '子育て掲示板',
