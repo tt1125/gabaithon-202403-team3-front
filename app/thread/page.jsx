@@ -1,7 +1,7 @@
 "use client"
 
 import { Button } from "@mui/material";
-import Thread from "../../components/thread";
+import Thread from "../../components/Thread";
 import { useEffect, useRef, useState } from "react";
 
 export default function thread() {
@@ -12,22 +12,12 @@ export default function thread() {
     const observerTarget = useRef(null);
 
     const loadThread = async (page) => {
-        const URL = `https://gorest.co.in/public/v2/users?&page=${page}`;
-
-        // fetch(URL)
-        // .then(res => res.json())
-        // .then(data => {
-        //     console.log(data)
-        //     setThreads([...threads, ...data]);
-        // })
-
-        const response = await fetch(URL);
-        const threadsData = await response.json();
-        console.log("レスポンスデータです",threadsData)
-        const count = threadsData.length;
-        setHasMore(count > 0);
-        setThreads([...threads, ...threadsData]);
-        threadsData.map((thread)=>console.log(thread))
+        // const threadsData = await response.json();
+        // console.log("レスポンスデータです",threadsData)
+        // const count = threadsData.length;
+        // setHasMore(count > 0);
+        // setThreads([...threads, ...threadsData]);
+        // threadsData.map((thread)=>console.log(thread))
     }
 
     useEffect(() => {

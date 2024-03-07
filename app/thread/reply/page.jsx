@@ -15,7 +15,8 @@ export default function reply() {
     const getData = async function(){
     const response = await fetch(`https://gorest.co.in/public/v2/users?&page=0`);
     const responseData =  response.json();
-    console.log(responsedata)}
+    setData([...responseData])}
+    console.log(responseData)
 
     useEffect(()=>{
          getData()
@@ -39,16 +40,16 @@ export default function reply() {
                     time="2024/03/08 2:40"
                     comment="眠いです" /> */}
 
-{/* 
-                    {
+
+                    {/* {
                        data.map((oneData)=>{
                       console.log("一人分のデータです",oneData)
 
 
-                       }) 
+                       }) } */}
 
 
-                    } */}
+                    
 
 
             </div>

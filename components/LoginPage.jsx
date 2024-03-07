@@ -1,8 +1,11 @@
-"use client"
-import { Button, TextField } from "@mui/material";
-import { useState } from "react";
+"useclient"
 
-export default function login() {
+import { Button, TextField } from "@mui/material";
+import { useEffect, useState } from "react";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import SignupPage from "./SignupPage";
+
+export default function LoginPage() {
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -11,11 +14,30 @@ export default function login() {
         setEmail(e.target.value);
     }
     function handlePasswordChange(e) {
-        setPassword(e.target.vaiue);
+        setPassword(e.target.value);
     }
+
+    const auth = getAuth();
+    const doLogin = () => {
+      
+    
+        // Firebaseで用意されているメールアドレスとパスワードでログインするための関数
+        signInWithEmailAndPassword(auth, email, password)
+          .then((userCredential) => {
+            const user = userCredential.user;
+            // ログインができたかどうかをわかりやすくするためのアラート
+            alert( 'ログインOK!' );
+            console.log( user );
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
 
     return (
         <main style={{paddingTop:"20vh"}}>
+            
+                <div>
             <p style={{textAlign: "center",fontSize: "60px"}}>
                 ログイン
             </p>
@@ -27,8 +49,9 @@ export default function login() {
                 <TextField  value={password} onChange={handlePasswordChange}  label="パスワード" sx={{width: "500px" ,marginBottom:"20px"}}/>
                 <br></br>
                 <Button variant="outlined" color="warning" sx={{marginRight:"100px"}}>新規作成</Button>
-                <Button variant="contained" color="warning" >ログイン</Button>
-            </div>
+                <Button variant="contained" color="warning" onClick={doLogin}>ログイン</Button>
+            </div></div>
+            
         </main>
     )
 }
