@@ -1,7 +1,7 @@
 "use client"
 
 import { Button } from "@mui/material";
-import Thread from "../../components/thread";
+import Thread from "../../components/Thread";
 import { useEffect, useRef, useState } from "react";
 
 export default function thread() {
@@ -12,7 +12,7 @@ export default function thread() {
     const observerTarget = useRef(null);
 
     const loadThread = async (page) => {
-        const URL = `https://gorest.co.in/public/v2/users?&page=${page}`;
+        const URL = `http://localhost:8000/api/v1/posts`;
 
         // fetch(URL)
         // .then(res => res.json())
