@@ -21,7 +21,7 @@ export default function thread() {
       };
 
     const loadThread = async (page) => {
-        const URL = `https://gorest.co.in/public/v2/users?&page=${page}`;
+        const URL = `http://localhost:8000/api/v1/posts`;
 
         // fetch(URL)
         // .then(res => res.json())
