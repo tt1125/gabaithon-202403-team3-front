@@ -2,15 +2,9 @@
 import { useRouter } from "next/navigation";
 import { Button, TextField } from "@mui/material";
 import { useState } from "react";
-import { getAuth} from "firebase/auth";
-import axios from "axios";
+import axios from "axios" ;
 
 export default function newevent() {
-
-    const auth = getAuth();
-    const user = auth.currentUser;
-    const userData = user.providerData
-    const name = userData[0].displayName
 
     const[title,setTitle]=useState("")
     const[date,setDate]=useState("")
@@ -39,7 +33,7 @@ export default function newevent() {
             date: date,
             location: where,
             content: detail,
-            user_id: "112345",
+            user_id: "112345"
         };
         
         try {
