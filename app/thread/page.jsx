@@ -1,7 +1,7 @@
 "use client"
 import { getAuth} from "firebase/auth";
 
-import { Button } from "@mui/material";
+import { Button, CircularProgress } from "@mui/material";
 
 import { useRouter } from "next/navigation";
 import Thread from "../../components/Thread"
@@ -85,7 +85,7 @@ export default function thread() {
                 ))}
                 <div ref={observerTarget}>
                     {hasMore &&
-                        <progress key={0} className="progress is-success is-radiusless" />}
+                        <CircularProgress key={0} className="progress is-success is-radiusless" sx={{marginTop:"50px"}}/>}
                 </div>
             </div>
             <div style={{ padding: "20px", position: "fixed", top: "90vh", width: "100%", display: "flex", justifyContent: "center", backgroundColor: "#F8F2E2" }}>
