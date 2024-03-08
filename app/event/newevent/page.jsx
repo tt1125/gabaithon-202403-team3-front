@@ -2,6 +2,7 @@
 import { useRouter } from "next/navigation";
 import { Button, TextField } from "@mui/material";
 import { useState } from "react";
+import axios from "axios";
 
 export default function newevent() {
 
@@ -9,6 +10,8 @@ export default function newevent() {
     const[date,setDate]=useState("")
     const[where,setWhere]=useState("")
     const[detail,setDetail]=useState("")
+
+    const router = useRouter();
 
     function handleTitlechange(e){
         setTitle(e.target.value)
@@ -24,7 +27,26 @@ export default function newevent() {
     }
 
 
-    const router = useRouter();
+    const handleSubmit = async () => {
+        const eventData = {
+            title: title,
+            date: date,
+            location: where,
+            content: detail,
+            user_id: "112345",
+        };
+        
+        try {
+            await axios.post("http://localhost:8000/api/v1/events", eventData);
+            alert("イベントが正常に投稿されました！");
+            router.push("/event");
+        } catch (error) {
+            console.error("イベントの投稿に失敗しました。", error);
+            alert("イベントの投稿に失敗しました。");
+        }
+    };
+
+
     const linkToEvent = () => {
       router.push("/event")
     };
@@ -82,7 +104,7 @@ export default function newevent() {
                 fullWidth
                 color="error"
                 variant="contained" 
-                
+                onClick={handleSubmit}
                 sx={{
                     width:"150px",
                     fontSize:"20px"
