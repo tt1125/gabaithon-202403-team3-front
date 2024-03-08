@@ -3,6 +3,7 @@ import { Button, TextField } from "@mui/material";
 import { useRouter } from "next/navigation";
 import Event from "../../components/Event"
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 
 export default function event() {
     const [events, setEvents] = useState([]);
@@ -39,12 +40,14 @@ export default function event() {
                 overflow: "scroll"
             }}>
                 {events.map((event) => (
+                    <Link href={`/detail/${event.id}`}>
                         <Event 
                             key={event.id}
                             title={event.title} 
                             date={event.date}
                             where={event.location}
                         />
+                    </Link>
                 ))}
             </div>
 
