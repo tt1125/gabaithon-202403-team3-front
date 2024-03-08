@@ -50,7 +50,7 @@ export default function SignupPage() {
 
     return (
         <main>
-            <div style={{ width: 'full', display: "flex", justifyContent: "center", alignItems: "center" }}>
+            <div style={{ width: 'full', display: "flex", justifyContent: "center", alignItems: "center" ,paddingTop:"20vh"}}>
                 <div style={{ width: "30%", display: "flex", flexDirection: "column", gap: "20px", alignItems: "center" }}>
                     <p style={{ fontSize: "60px" }}>
                         SignUp

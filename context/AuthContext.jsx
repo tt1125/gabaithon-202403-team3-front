@@ -6,7 +6,6 @@ import { onAuthStateChanged } from 'firebase/auth'
 import LoginPage from '../components/LoginPage'
 import SignupPage from '../components/SignupPage'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { CircularProgress } from '@mui/material'
 
 
 // コンテキストを作成
@@ -38,9 +37,7 @@ export function AuthProvider({ children }) {
 
   // ローディング中は何も表示しないか、ローディング表示をする
   if (loading) {
-    return <div style={{width:"full", height:"90vh" , display:"flex" , justifyContent:"center" , alignItems:"center"}}>
-      <CircularProgress/>
-    </div>;
+    return <div>Loading...</div>;
   }
 
   return (

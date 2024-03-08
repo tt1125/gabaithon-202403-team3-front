@@ -5,10 +5,11 @@ import { useEffect, useState } from "react";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import SignupPage from "./SignupPage";
 import { useRouter } from "next/navigation";
+import { useNavigate } from "react-router-dom";
 
 export default function LoginPage() {
     
-    
+    const navigate = useNavigate()
     const router = useRouter();
     const linkToSignupPage = () => {
         router.push("./signup")
@@ -33,8 +34,10 @@ export default function LoginPage() {
           .then((userCredential) => {
             const user = userCredential.user;
             // ログインができたかどうかをわかりやすくするためのアラート
-            alert( 'ログインOK!' );
-            console.log( user );
+            
+          })
+          .then(()=>{
+           navigate("/")
           })
           .catch((error) => {
             console.log(error);

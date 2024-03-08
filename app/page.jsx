@@ -19,7 +19,7 @@ export default function home (){
 
   return (
     <main style={{paddingTop:"10vh"}}>
-      <p style={{textAlign: "center",fontSize: "40px"}}>ホーム画面｜HOME</p>
+      <p style={{textAlign: "center",fontSize: "40px",margin:"20px"}}>ホーム画面｜HOME</p>
       <div style={{backgroundColor : "rgba(255, 255, 255, 1)",
                    width: "90%",
                    height: "400px",
@@ -27,9 +27,9 @@ export default function home (){
                    textAlign: "center",
                    fontSize:"40px",
                    }}>
-        <Button onClick={linkToThread} variant="contained" color="warning" sx={{marginTop:"50px",marginBottom:"10%",marginLeft:"2%",marginRight: "2%" ,width:"30%",height: "300px",fontSize:"40px"}}>子育て<br></br>掲示板</Button>
-        <Button onClick={linkToEvent} variant="contained" color="warning" sx={{marginTop:"50px",marginBottom:"10%",marginRight: "2%" ,width:"30%",height: "300px",fontSize:"40px"}}>イベント<br></br>情報</Button>
-        <Button onClick={linkToInformation} variant="contained" color="warning" sx={{marginTop:"50px",marginBottom:"10%",marginRight:"2%",width:"30%",height: "300px",fontSize:"40px"}}>子育て<br></br>支援情報</Button>
+        <Button onClick={linkToThread} variant="contained" color="warning" sx={{marginTop:"50px",marginBottom:"10%",marginLeft:"2%",marginRight: "2%" ,width:"30%",height: "300px",fontSize:"40px"}}>掲示板</Button>
+        <Button onClick={linkToEvent} variant="contained" color="warning" sx={{marginTop:"50px",marginBottom:"10%",marginRight: "2%" ,width:"30%",height: "300px",fontSize:"40px"}}>イベント</Button>
+        <Button onClick={linkToInformation} variant="contained" color="warning" sx={{marginTop:"50px",marginBottom:"10%",marginRight:"2%",width:"30%",height: "300px",fontSize:"40px"}}>子育て支援情報</Button>
       </div>
     </main>
   )
