@@ -1,24 +1,29 @@
 "use client"
 import { Button, TextField } from "@mui/material";
-import { useRouter } from "next/navigation";
+import { useRouter, useParams } from "next/navigation";
 import { useEffect, useState } from "react";
+
 
 export default function eventdetail() {
     const [event, setEvent] = useState("");
+    const router = useParams();
+    console.log(router)
+    console.log(router.id)
+    const id = router.id;
+    const ul = useRouter();
 
     useEffect(() => {
-            console.log("useEffect")
             const fetchEvent = async () => {
                 const response = await fetch(`http://localhost:8000/api/v1/events/${id}`);
                 const data = await response.json();
+                console.log(data)
                 setEvent(data);
             };
             fetchEvent();
     }, []);
 
-    const router = useRouter();
     const linkToEvent = () => {
-      router.push("/event")
+      ul.push("/event")
     };
 
     return (
