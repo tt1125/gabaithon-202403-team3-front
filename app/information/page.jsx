@@ -15,7 +15,7 @@ export default function information() {
       };
 
     return (
-        <main>
+        <main style={{paddingTop:"10vh"}}>
             <p style={{ fontSize: "40px", textAlign: "center", margin: "20px 0" }}>子育て支援情報</p>
             <div style={{
                 backgroundColor: "rgba(255, 255, 255, 1)",
@@ -24,7 +24,9 @@ export default function information() {
                 margin: "auto",
                 textAlign: "center",
                 fontSize: " 20px",
-                marginBottom: "10px"
+                marginBottom: "10px",
+                whiteSpace: "nowrap",
+                overflow: "scroll"
             }}>
 
 

@@ -5,6 +5,16 @@ import Event from "../../components/Event"
 import { useEffect, useRef, useState } from "react";
 
 export default function event() {
+    const [events, setEvents] = useState([]);
+
+    useEffect(() => {
+        const fetchEvents = async () => {
+            const response = await fetch('http://localhost:8000/api/v1/events');
+            const data = await response.json();
+            setEvents(data);
+        };
+        fetchEvents();
+    }, []);
 
     const router = useRouter();
     const linkToHome = () => {
@@ -15,7 +25,7 @@ export default function event() {
       };
 
     return (
-        <main>
+        <main style={{paddingTop:"10vh"}}>
             <p style={{ fontSize: "40px", textAlign: "center", margin: "20px 0" }}>イベント情報</p>
             <div style={{
                 backgroundColor: "rgba(255, 255, 255, 1)",
@@ -24,23 +34,18 @@ export default function event() {
                 margin: "auto",
                 textAlign: "center",
                 fontSize: " 20px",
-                marginBottom: "10px"
+                marginBottom: "10px",
+                whiteSpace: "nowrap",
+                overflow: "scroll"
             }}>
-            
-            
-
-            <Event title="第〇回〇〇会開催！" date="1/22" where="佐賀市"/>
-            <Event title="第〇回〇〇会開催！" date="1/22" where="佐賀市"/>
-            <Event title="第〇回〇〇会開催！" date="1/22" where="佐賀市"/>
-            <Event title="第〇回〇〇会開催！" date="1/22" where="佐賀市"/>
-            <Event title="第〇回〇〇会開催！" date="1/22" where="佐賀市"/>
-            <Event title="第〇回〇〇会開催！" date="1/22" where="佐賀市"/>
-
-
-         
-
-
-
+                {events.map((event) => (
+                        <Event 
+                            key={event.id}
+                            title={event.title} 
+                            date={event.date}
+                            where={event.location}
+                        />
+                ))}
             </div>
 
             <div style={{ display: "flex" , justifyContent: "space-between" }}>
@@ -61,7 +66,6 @@ export default function event() {
                         color="error"
                         variant="contained"
                         sx={{
-
                             width: "150px",
                             fontSize: "20px"
                         }}>新規作成</Button>                    

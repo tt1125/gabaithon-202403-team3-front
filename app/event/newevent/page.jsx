@@ -3,6 +3,7 @@ import { useRouter } from "next/navigation";
 import { Button, TextField } from "@mui/material";
 import { useState } from "react";
 import { getAuth} from "firebase/auth";
+import axios from "axios";
 
 export default function newevent() {
 
@@ -15,6 +16,8 @@ export default function newevent() {
     const[date,setDate]=useState("")
     const[where,setWhere]=useState("")
     const[detail,setDetail]=useState("")
+
+    const router = useRouter();
 
     function handleTitlechange(e){
         setTitle(e.target.value)
@@ -30,14 +33,33 @@ export default function newevent() {
     }
 
 
-    const router = useRouter();
-    const linkToHome = () => {
-      router.push("/")
+    const handleSubmit = async () => {
+        const eventData = {
+            title: title,
+            date: date,
+            location: where,
+            content: detail,
+            user_id: "112345",
+        };
+        
+        try {
+            await axios.post("http://localhost:8000/api/v1/events", eventData);
+            alert("イベントが正常に投稿されました！");
+            router.push("/event");
+        } catch (error) {
+            console.error("イベントの投稿に失敗しました。", error);
+            alert("イベントの投稿に失敗しました。");
+        }
+    };
+
+
+    const linkToEvent = () => {
+      router.push("/event")
     };
 
 
     return (
-        <main>
+        <main style={{paddingTop:"10vh"}}>
       <p style={{textAlign: "center",fontSize: "40px"}}>イベント情報 投稿フォーム</p>
       <div style={{backgroundColor : "rgba(255, 255, 255, 1)",
                    width: "90%",
@@ -88,17 +110,17 @@ export default function newevent() {
                 fullWidth
                 color="error"
                 variant="contained" 
-                
+                onClick={handleSubmit}
                 sx={{
                     width:"150px",
                     fontSize:"20px"
                     }}>投稿する</Button>
             </div>
       </div>
-      <div style={{textAlign: "left",marginLeft: "10px",marginTop: "10px"}}>
+      <div style={{textAlign: "left",marginLeft: "5%",marginTop: "10px"}}>
                 <Button 
                 fullWidth
-                onClick ={linkToHome}
+                onClick ={linkToEvent}
                 color="success"
                 variant="contained" 
                 
@@ -106,7 +128,7 @@ export default function newevent() {
                 sx={{
                     width:"180px",
                     fontSize:"20px"
-                    }}>←ホームへ戻る</Button>
+                    }}>←戻る</Button>
             </div>
 
 
