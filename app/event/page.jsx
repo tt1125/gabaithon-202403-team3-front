@@ -37,12 +37,12 @@ export default function event() {
                 marginBottom: "10px"
             }}>
                 {events.map((event) => (
-                    <Event 
-                        key={event.id}
-                        title={event.title} 
-                        date={event.date}
-                        where={event.location}
-                    />
+                        <Event 
+                            key={event.id}
+                            title={event.title} 
+                            date={event.date}
+                            where={event.location}
+                        />
                 ))}
             </div>
 
