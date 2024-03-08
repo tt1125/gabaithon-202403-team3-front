@@ -3,9 +3,14 @@
 import { Button, TextField } from "@mui/material";
 import { useState } from "react";
 import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth"
+import { useRouter } from "next/navigation";
 
 export default function SignupPage() {
-
+   
+    const router = useRouter()
+    const linkToLoginPage = () => {
+      router.push("./login")
+    };
 
 
     const [name, setName] = useState('')
@@ -54,7 +59,7 @@ export default function SignupPage() {
                     <TextField fullWidth value={email} onChange={handleEmailChange} label="メールアドレス" />
                     <TextField fullWidth value={password} onChange={handlePasswordChange} label="パスワード" />
                     <div style={{ display: "flex", width: "100%", justifyContent: "space-between", gap: "60px" }}>
-                        <Button variant="outlined" color="warning" fullWidth >戻る</Button>
+                        <Button onClick={linkToLoginPage} variant="outlined" color="warning" fullWidth >戻る</Button>
                         <Button variant="contained" color="warning" fullWidth onClick={doRegister}>登録</Button>
                     </div>
                 </div>
