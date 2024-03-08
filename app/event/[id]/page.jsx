@@ -1,12 +1,29 @@
 "use client"
 import { Button, TextField } from "@mui/material";
-import { useRouter } from "next/navigation";
+import { useRouter, useParams } from "next/navigation";
+import { useEffect, useState } from "react";
+
 
 export default function eventdetail() {
+    const [event, setEvent] = useState("");
+    const router = useParams();
+    console.log(router)
+    console.log(router.id)
+    const id = router.id;
+    const ul = useRouter();
 
-    const router = useRouter();
+    useEffect(() => {
+            const fetchEvent = async () => {
+                const response = await fetch(`http://localhost:8000/api/v1/events/${id}`);
+                const data = await response.json();
+                console.log(data)
+                setEvent(data);
+            };
+            fetchEvent();
+    }, []);
+
     const linkToEvent = () => {
-      router.push("/event")
+      ul.push("/event")
     };
 
     return (
@@ -24,16 +41,16 @@ export default function eventdetail() {
             
 
             <div style= {{fontSize: "30px" ,width: "90%",height: "50px", textAlign: "left",marginLeft: "50px", borderBottom: "solid 1px" }}>
-                title
+                {event.title}
             </div>
             <div style= {{fontSize: "30px" ,width: "90%",height: "50px", textAlign: "left",marginLeft: "50px", borderBottom: "solid 1px" }}>
-                date
+                {event.date}
             </div>
             <div style= {{fontSize: "30px" ,width: "90%",height: "50px", textAlign: "left",marginLeft: "50px", borderBottom: "solid 1px" }}>
-                where
+                {event.location}
             </div>
             <div style= {{fontSize: "30px" ,width: "90%",height: "230px", textAlign: "left",marginLeft: "50px"}}>
-                detail
+                {event.content}
             </div>
 
          

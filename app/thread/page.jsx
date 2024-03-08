@@ -1,6 +1,7 @@
 "use client"
+import { getAuth} from "firebase/auth";
 
-import { Button } from "@mui/material";
+import { Button, CircularProgress } from "@mui/material";
 
 import { useRouter } from "next/navigation";
 import Thread from "../../components/Thread"
@@ -8,6 +9,10 @@ import Thread from "../../components/Thread"
 import { useEffect, useRef, useState } from "react";
 
 export default function thread() {
+    const auth = getAuth();
+    const user = auth.currentUser;
+    const userData = user.providerData
+    const name = userData[0].displayName
 
     const [threads, setThreads] = useState([]);
     const [hasMore, setHasMore] = useState(true);
@@ -22,16 +27,16 @@ export default function thread() {
         router.push("/thread/reply")
       };
 
+      const createNewThread = () => {
+        let threadName = prompt("タイトルを入力");  //name ユーザーの名前
+       
+
+
+      }
+
     const loadThread = async (page) => {
 
         const URL = `http://localhost:8000/api/v1/posts`;
-
-        // fetch(URL)
-        // .then(res => res.json())
-        // .then(data => {
-        //     console.log(data)
-        //     setThreads([...threads, ...data]);
-        // })
 
         const response = await fetch(URL);
         const threadsData = await response.json();
@@ -80,15 +85,16 @@ export default function thread() {
                 ))}
                 <div ref={observerTarget}>
                     {hasMore &&
-                        <progress key={0} className="progress is-success is-radiusless" />}
+                        <CircularProgress key={0} className="progress is-success is-radiusless" sx={{marginTop:"50px"}}/>}
                 </div>
             </div>
             <div style={{ padding: "20px", position: "fixed", top: "90vh", width: "100%", display: "flex", justifyContent: "center", backgroundColor: "#F8F2E2" }}>
                 <div style={{ width: "30%", display: "flex", justifyContent: "space-between" }}>
                     <Button onClick={linkToHome} variant="text" color="warning" sx={{ fontWeight: "bolder" }}>ホームへ戻る</Button>
-                    <Button onClick={linkToReply} variant="contained" color="warning">新規作成</Button>
+                    <Button onClick={createNewThread} variant="contained" color="warning">新規作成</Button>
                 </div>
             </div>
+            
         </main>
     )
 }
