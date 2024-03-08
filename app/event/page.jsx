@@ -40,7 +40,7 @@ export default function event() {
                 overflow: "scroll"
             }}>
                 {events.map((event) => (
-                    <Link href={`/detail/${event.id}`}>
+                    <Link href={`event/${event.id}`}>
                         <Event 
                             key={event.id}
                             title={event.title} 
