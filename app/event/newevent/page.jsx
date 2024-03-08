@@ -2,8 +2,14 @@
 import { useRouter } from "next/navigation";
 import { Button, TextField } from "@mui/material";
 import { useState } from "react";
+import { getAuth} from "firebase/auth";
 
 export default function newevent() {
+
+    const auth = getAuth();
+    const user = auth.currentUser;
+    const userData = user.providerData
+    const name = userData[0].displayName
 
     const[title,setTitle]=useState("")
     const[date,setDate]=useState("")

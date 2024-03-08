@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import Thread from "../../../components/Thread";
 import Reply from "../../../components/Reply";
 import { grey } from "@mui/material/colors";
+import { getAuth} from "firebase/auth";
 
 export default function reply() {
     const [data , setData] = useState()
@@ -13,6 +14,11 @@ export default function reply() {
         setReply(e.target.value)
     }
 
+    const auth = getAuth();
+    const user = auth.currentUser;
+    const userData = user.providerData
+    const name = userData[0].displayName
+
     const router = useRouter();
     const linkToThread = () => {
       router.push("/thread")
@@ -20,7 +26,7 @@ export default function reply() {
 
 
     const getData = async function(){
-    const response = await fetch(`https://gorest.co.in/public/v2/users?&page=0`);
+    const response = await fetch(`https://gorest.co.in/public/v2/users?&page=0`); //ユーザー名 name
 
     const responseData =  await response.json();
     console.log("data", responseData)}
