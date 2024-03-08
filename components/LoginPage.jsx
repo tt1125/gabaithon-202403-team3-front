@@ -1,11 +1,18 @@
-"useclient"
+"use client"
 
 import { Button, TextField } from "@mui/material";
 import { useEffect, useState } from "react";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import SignupPage from "./SignupPage";
+import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
+    
+    
+    const router = useRouter();
+    const linkToSignupPage = () => {
+        router.push("./signup")
+    };
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -48,7 +55,7 @@ export default function LoginPage() {
                 <br></br>
                 <TextField  value={password} onChange={handlePasswordChange}  label="パスワード" sx={{width: "500px" ,marginBottom:"20px"}}/>
                 <br></br>
-                <Button variant="outlined" color="warning" sx={{marginRight:"100px"}}>新規作成</Button>
+                <Button onClick={linkToSignupPage} variant="outlined" color="warning" sx={{marginRight:"100px"}}>新規作成</Button>
                 <Button variant="contained" color="warning" onClick={doLogin}>ログイン</Button>
             </div></div>
             
