@@ -18,10 +18,6 @@ console.log(name)
 
 
     signOut(auth)
-      .then(() => {
-        // ログアウトされたことをわかりやすくするためのアラート
-        alert('ログアウト完了！');
-      })
       .catch((error) => {
         console.log(error);
       });
@@ -30,7 +26,7 @@ console.log(name)
   return (
     <div style={{ marginTop: "10px" ,position: "fixed", width: '100%', backgroundColor: "rgba(255, 255, 255, 0)", display: "flex", alignItems:"center", justifyContent: "space-between", backgroundColor: "rgba(255, 255, 255, 0)" }}>
       <div><span style={{ marginLeft: "30px", fontSize: "40px",fontWeight:"bolder"}} >Lulla!</span>
-        <span style={{marginLeft:"30px" , textAlign:"center" , paddingBottom:"20px"}}>{name}
+        <span style={{marginLeft:"30px" , textAlign:"center" , paddingBottom:"20px"}}>
           </span></div>
 
       <div style={{ marginRight: "30px", }}>
