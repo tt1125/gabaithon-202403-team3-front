@@ -7,8 +7,6 @@ import { useEffect, useState } from "react";
 export default function eventdetail() {
     const [event, setEvent] = useState("");
     const router = useParams();
-    console.log(router)
-    console.log(router.id)
     const id = router.id;
     const ul = useRouter();
 

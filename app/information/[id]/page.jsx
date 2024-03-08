@@ -1,13 +1,27 @@
 "use client"
 import { Button, TextField } from "@mui/material";
-import { useRouter } from "next/navigation";
+import { useRouter, useParams } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export default function informationdetail() {
 
     const router = useRouter();
+    const param = useParams();
+    const id = param.id;
     const linkToInformation = () => {
       router.push("/information")
     };
+    const [information, setInformation] = useState("");
+
+    useEffect(() => {
+        const fetchInformation = async () => {
+            const response = await fetch(`http://localhost:8000/api/v1/informations/${id}`);
+            const data = await response.json();
+            setInformation(data);
+        };
+        fetchInformation();
+}, []);
+
 
     return (
         <main style={{paddingTop:"10vh"}}>
@@ -24,10 +38,10 @@ export default function informationdetail() {
             
 
             <div style= {{fontSize: "30px" ,width: "90%",height: "50px", textAlign: "left",marginLeft: "50px", borderBottom: "solid 1px" }}>
-                title
+                {information.title}
             </div>
             <div style= {{fontSize: "30px" ,width: "90%",height: "330px", textAlign: "left",marginLeft: "50px"}}>
-                detail
+                {information.content}
             </div>
 
          

@@ -3,6 +3,7 @@ import { useRouter } from "next/navigation";
 import { Button, TextField } from "@mui/material";
 import { useState } from "react";
 import { getAuth } from "firebase/auth";
+import axios from "axios" ;
 
 
 export default function newevent() {
@@ -24,6 +25,22 @@ export default function newevent() {
     const router = useRouter();
     const linkToInformation = () => {
       router.push("/information")
+    };
+
+    const handleSubmit = async () => {
+        const InformationData = {
+            title: title,
+            content: detail,
+            user_id: name
+        };
+        
+        try {
+            await axios.post("http://localhost:8000/api/v1/informations", InformationData);
+            router.push("/information/done");
+        } catch (error) {
+            console.error("イベントの投稿に失敗しました。", error);
+            alert("イベントの投稿に失敗しました。");
+        }
     };
 
 
@@ -62,7 +79,8 @@ export default function newevent() {
                 <Button 
                 fullWidth
                 color="error"
-                variant="contained" 
+                variant="contained"
+                onClick={handleSubmit} 
                 
                 sx={{
                     width:"150px",

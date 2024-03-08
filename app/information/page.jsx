@@ -3,8 +3,19 @@ import { Button, TextField } from "@mui/material";
 import { useRouter } from "next/navigation";
 import Information from "../../components/Information"
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 
 export default function information() {
+    const [informations, setInformations] = useState([]);
+
+    useEffect(() => {
+        const fetchInformations = async () => {
+            const response = await fetch('http://localhost:8000/api/v1/informations');
+            const data = await response.json();
+            setInformations(data);
+        };
+        fetchInformations();
+    }, []);
 
     const router = useRouter();
     const linkToHome = () => {
@@ -30,10 +41,14 @@ export default function information() {
             }}>
 
 
-            <Information title="第〇回〇〇会開催！" />
-            <Information title="第〇回〇〇会開催！" />
-            <Information title="第〇回〇〇会開催！" />
-
+            {informations.map((information) => (
+                <Link href={`information/${information.id}`}>
+                    <Information 
+                        key={information.id}
+                        title={information.title} 
+                    />
+                </Link>
+            ))}
             </div>
 
             <div style={{ display: "flex" , justifyContent: "space-between" }}>
