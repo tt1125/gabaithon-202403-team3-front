@@ -2,7 +2,7 @@
 import { useRouter } from "next/navigation";
 import { Button, TextField } from "@mui/material";
 import { useState } from "react";
-import axios from "axios";
+import axios from "axios" ;
 
 export default function newevent() {
 
@@ -33,7 +33,7 @@ export default function newevent() {
             date: date,
             location: where,
             content: detail,
-            user_id: "112345",
+            user_id: "112345"
         };
         
         try {
