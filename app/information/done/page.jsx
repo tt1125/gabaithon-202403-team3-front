@@ -13,7 +13,7 @@ export default function neweventdone() {
     };
 
     return (
-        <main style={{paddingTop:"20vh"}}>
+        <main style={{paddingTop:"10vh"}}>
       <p style={{textAlign: "center",fontSize: "40px"}}>子育て支援情報  投稿フォーム</p>
       <div style={{backgroundColor : "rgba(255, 255, 255, 1)",
                    width: "90%",

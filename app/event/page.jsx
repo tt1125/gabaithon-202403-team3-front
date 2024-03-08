@@ -25,7 +25,7 @@ export default function event() {
       };
 
     return (
-        <main style={{paddingTop:"20vh"}}>
+        <main style={{paddingTop:"10vh"}}>
             <p style={{ fontSize: "40px", textAlign: "center", margin: "20px 0" }}>イベント情報</p>
             <div style={{
                 backgroundColor: "rgba(255, 255, 255, 1)",
@@ -34,7 +34,9 @@ export default function event() {
                 margin: "auto",
                 textAlign: "center",
                 fontSize: " 20px",
-                marginBottom: "10px"
+                marginBottom: "10px",
+                whiteSpace: "nowrap",
+                overflow: "scroll"
             }}>
                 {events.map((event) => (
                     <Event 
@@ -64,7 +66,6 @@ export default function event() {
                         color="error"
                         variant="contained"
                         sx={{
-
                             width: "150px",
                             fontSize: "20px"
                         }}>新規作成</Button>                    

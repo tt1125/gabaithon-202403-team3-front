@@ -10,7 +10,7 @@ export default function informationdetail() {
     };
 
     return (
-        <main style={{paddingTop:"20vh"}}>
+        <main style={{paddingTop:"10vh"}}>
             <p style={{ fontSize: "40px", textAlign: "center", margin: "20px 0" }}>子育て支援情報</p>
             <div style={{
                 backgroundColor: "rgba(255, 255, 255, 1)",
