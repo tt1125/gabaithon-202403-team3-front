@@ -53,7 +53,7 @@ export default function newevent() {
 
 
     return (
-        <main style={{paddingTop:"20vh"}}>
+        <main style={{paddingTop:"10vh"}}>
       <p style={{textAlign: "center",fontSize: "40px"}}>イベント情報 投稿フォーム</p>
       <div style={{backgroundColor : "rgba(255, 255, 255, 1)",
                    width: "90%",
@@ -111,7 +111,7 @@ export default function newevent() {
                     }}>投稿する</Button>
             </div>
       </div>
-      <div style={{textAlign: "left",marginLeft: "10px",marginTop: "10px"}}>
+      <div style={{textAlign: "left",marginLeft: "5%",marginTop: "10px"}}>
                 <Button 
                 fullWidth
                 onClick ={linkToEvent}

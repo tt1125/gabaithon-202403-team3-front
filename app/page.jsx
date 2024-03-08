@@ -18,7 +18,7 @@ export default function home (){
   
 
   return (
-    <main style={{paddingTop:"20vh"}}>
+    <main style={{paddingTop:"10vh"}}>
       <p style={{textAlign: "center",fontSize: "40px"}}>ホーム画面｜HOME</p>
       <div style={{backgroundColor : "rgba(255, 255, 255, 1)",
                    width: "90%",
