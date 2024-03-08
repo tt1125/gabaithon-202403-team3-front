@@ -4,19 +4,17 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function eventdetail() {
-    const [event, setEvent] = useState({});
-    const { id } = router.query;
+    const [event, setEvent] = useState("");
 
     useEffect(() => {
-        if(id){
+            console.log("useEffect")
             const fetchEvent = async () => {
                 const response = await fetch(`http://localhost:8000/api/v1/events/${id}`);
                 const data = await response.json();
                 setEvent(data);
             };
             fetchEvent();
-        }
-    }, [id]);
+    }, []);
 
     const router = useRouter();
     const linkToEvent = () => {
